@@ -14,7 +14,7 @@ const {
   counterReset
 } = withReduxDispatch(counterActions);
 
-const Counter = () => {
+const CounterForm = () => {
   const counter = useSelector(selectCounter, shallowEqual);
 
   const [number, setNumber] = useState(counter);
@@ -58,29 +58,37 @@ const Counter = () => {
 
   return (
     <>
-      <h2>Counter: {counter}</h2>
-      <hr />
-      <button onClick={handleClickIncrease}>+ 1</button>
+      <p>
+        <button onClick={handleClickIncrease}>+ 1</button>
 
-      <span> | </span>
-      <button onClick={handleClickDecrease}>- 1</button>
+        <span> | </span>
+        <button onClick={handleClickDecrease}>- 1</button>
 
-      <span> | </span>
-      <button onClick={handleClickReset}>= 0</button>
+        <span> | </span>
+        <button onClick={handleClickReset}>= 0</button>
+      </p>
 
-      <span> | </span>
-      <button onClick={handleClickSet}> = </button>
-      <input
-        value={number}
-        onKeyPress={handleKeyPressSet}
-        onChange={handleChangeNumber}
-        type="text"
-      />
+      <p>
+        <input
+          value={number}
+          onKeyPress={handleKeyPressSet}
+          onChange={handleChangeNumber}
+          type="text"
+        />
+        <button onClick={handleClickSet}> SET </button>
+      </p>
 
-      <span> | </span>
-      <input value={counter} onChange={handleChangeSet} type="text" />
+      <p>
+        <label htmlFor="number-live"> counter = </label>
+        <input
+          id="number-live"
+          value={counter}
+          onChange={handleChangeSet}
+          type="text"
+        />
+      </p>
     </>
   );
 };
 
-export default Counter;
+export default CounterForm;
