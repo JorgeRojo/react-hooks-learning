@@ -1,9 +1,9 @@
 import React, { useCallback, useState, useEffect } from "react";
 import { useSelector, shallowEqual } from "react-redux";
+import { withReduxDispatch } from "../../store";
 
 import * as counterActions from "../../actions/counterActions";
 import { selectCounter } from "../../reducer";
-import { withReduxDispatch } from "../../store";
 
 import { getNumberFromEvent } from "./counterHelpers";
 
@@ -14,7 +14,7 @@ const {
   counterReset
 } = withReduxDispatch(counterActions);
 
-const useCounter = () => {
+const Counter = () => {
   const counter = useSelector(selectCounter, shallowEqual);
 
   const [number, setNumber] = useState(counter);
@@ -22,12 +22,6 @@ const useCounter = () => {
   useEffect(() => {
     setNumber(counter);
   }, [counter]);
-
-  return [counter, number, setNumber];
-};
-
-const Counter = () => {
-  const [counter, number, setNumber] = useCounter();
 
   const handleClickIncrease = useCallback(() => {
     counterIncrease();
@@ -41,12 +35,9 @@ const Counter = () => {
     counterReset();
   }, []);
 
-  const handleChangeNumber = useCallback(
-    event => {
-      setNumber(getNumberFromEvent(event));
-    },
-    [setNumber]
-  );
+  const handleChangeNumber = useCallback(event => {
+    setNumber(getNumberFromEvent(event));
+  }, []);
 
   const handleClickSet = useCallback(() => {
     counterSet(number);
