@@ -2,6 +2,7 @@ import { createStore, applyMiddleware } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
 import reducer from "../reducer";
+import withReduxDispatchGenerator from "./withReduxDispatchGenerator";
 
 const initialState = {};
 const middleware = [thunk];
@@ -15,10 +16,4 @@ const store = createStore(
 
 export default store;
 
-export const withReduxDispatch = (actions = {}) => {
-  return Object.keys(actions).reduce((wrappers, actionName) => {
-    wrappers[actionName] = params =>
-      store.dispatch(actions[actionName](params));
-    return wrappers;
-  }, {});
-};
+export const withReduxDispatch = withReduxDispatchGenerator(store);

@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CounterForm Component renders the component 1`] = `
+<div>
+  <p>
+    <button
+      aria-label="counterIncreaseBtn"
+    >
+      + 1
+    </button>
+    <span>
+       | 
+    </span>
+    <button
+      aria-label="counterDecreaseBtn"
+    >
+      - 1
+    </button>
+    <span>
+       | 
+    </span>
+    <button
+      aria-label="counterResetBtn"
+    >
+      = 0
+    </button>
+  </p>
+  <p>
+    <input
+      aria-label="handleChangeNumberInput"
+      type="text"
+      value="999"
+    />
+    <button
+      aria-label="handleClickSetBtn"
+    >
+      SET
+    </button>
+  </p>
+  <p>
+    <label
+      for="number-live"
+    >
+       counter = 
+    </label>
+    <input
+      aria-label="handleChangeSetInput"
+      id="number-live"
+      type="text"
+      value="999"
+    />
+  </p>
+</div>
+`;
