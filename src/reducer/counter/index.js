@@ -2,8 +2,8 @@ import {
   COUNTER_DECREASE,
   COUNTER_INCREASE,
   COUNTER_RESET,
-  COUNTER_SET
-} from "../../actions/actionTypes";
+  COUNTER_SET,
+} from '../../actions/actionTypes';
 
 const defaultState = 0;
 

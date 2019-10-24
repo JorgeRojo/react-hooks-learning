@@ -1,20 +1,20 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { render, cleanup } from "@testing-library/react";
-import { Provider } from "react-redux";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { render, cleanup } from '@testing-library/react';
+import { Provider } from 'react-redux';
 
-import store from "../../../store";
+import store from '../../../store';
 
-import { selectCounter } from "../../../reducer/counter";
+import { selectCounter } from '../../../reducer/counter';
 
-import CounterHeader from "../CounterHeader";
+import CounterHeader from '../CounterHeader';
 
-jest.mock("../../../store", () =>
-  require("../../../store/___mocks___/mockStore")
+jest.mock('../../../store', () =>
+  require('../../../store/___mocks___/mockStore')
 );
-jest.mock("../../../reducer/counter");
+jest.mock('../../../reducer/counter');
 
-describe("CounterHeader Component", () => {
+describe('CounterHeader Component', () => {
   const component = (
     <Provider store={store}>
       <CounterHeader />
@@ -30,13 +30,13 @@ describe("CounterHeader Component", () => {
     cleanup();
   });
 
-  it("renders without crashing", () => {
-    const div = document.createElement("div");
+  it('renders without crashing', () => {
+    const div = document.createElement('div');
     ReactDOM.render(component, div);
     ReactDOM.unmountComponentAtNode(div);
   });
 
-  it("renders the component", () => {
+  it('renders the component', () => {
     const { container } = render(component);
     expect(container).toMatchSnapshot();
   });

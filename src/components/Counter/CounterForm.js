@@ -1,17 +1,17 @@
-import React, { useCallback, useState, useEffect } from "react";
-import { useSelector, shallowEqual } from "react-redux";
-import { withReduxDispatch } from "../../store";
+import React, { useCallback, useState, useEffect } from 'react';
+import { useSelector, shallowEqual } from 'react-redux';
+import { withReduxDispatch } from '../../store';
 
-import * as counterActions from "../../actions/counterActions";
-import { selectCounter } from "../../reducer";
+import * as counterActions from '../../actions/counterActions';
+import { selectCounter } from '../../reducer';
 
-import { getNumberFromEvent } from "./counterHelpers";
+import { getNumberFromEvent } from './counterHelpers';
 
 const {
   counterIncrease,
   counterDecrease,
   counterSet,
-  counterReset
+  counterReset,
 } = withReduxDispatch(counterActions);
 
 const CounterForm = () => {
@@ -33,7 +33,7 @@ const CounterForm = () => {
 
   const handleKeyPressSet = useCallback(
     ({ key }) => {
-      if (key === "Enter") {
+      if (key === 'Enter') {
         counterSet(number);
       }
     },

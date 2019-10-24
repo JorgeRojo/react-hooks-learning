@@ -2,52 +2,52 @@ import {
   COUNTER_DECREASE,
   COUNTER_INCREASE,
   COUNTER_RESET,
-  COUNTER_SET
-} from "../../../actions/actionTypes";
+  COUNTER_SET,
+} from '../../../actions/actionTypes';
 
-import reducer from "../index";
+import reducer from '../index';
 
-describe("counter reducer", () => {
-  it("Default", () => {
+describe('counter reducer', () => {
+  it('Default', () => {
     const action = {
-      type: "none"
+      type: 'none',
     };
     const expected = 0;
     expect(reducer(undefined, action)).toEqual(expected);
   });
 
-  it("COUNTER_DECREASE", () => {
+  it('COUNTER_DECREASE', () => {
     const action = {
-      type: COUNTER_DECREASE
+      type: COUNTER_DECREASE,
     };
     const state = 1;
     const expected = 0;
     expect(reducer(state, action)).toEqual(expected);
   });
 
-  it("COUNTER_INCREASE", () => {
+  it('COUNTER_INCREASE', () => {
     const action = {
-      type: COUNTER_INCREASE
+      type: COUNTER_INCREASE,
     };
     const state = 1;
     const expected = 2;
     expect(reducer(state, action)).toEqual(expected);
   });
 
-  it("COUNTER_RESET", () => {
+  it('COUNTER_RESET', () => {
     const action = {
-      type: COUNTER_RESET
+      type: COUNTER_RESET,
     };
     const state = 150;
     const expected = 0;
     expect(reducer(state, action)).toEqual(expected);
   });
 
-  it("COUNTER_SET", () => {
+  it('COUNTER_SET', () => {
     const expected = 666;
     const action = {
       type: COUNTER_SET,
-      payload: { number: expected }
+      payload: { number: expected },
     };
     const state = 0;
     expect(reducer(state, action)).toEqual(expected);

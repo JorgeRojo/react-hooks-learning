@@ -2,46 +2,46 @@ import {
   COUNTER_DECREASE,
   COUNTER_INCREASE,
   COUNTER_RESET,
-  COUNTER_SET
-} from "../actionTypes";
+  COUNTER_SET,
+} from '../actionTypes';
 
 import {
   counterDecrease,
   counterIncrease,
   counterReset,
-  counterSet
-} from "../counterActions";
+  counterSet,
+} from '../counterActions';
 
-describe("counterActions", () => {
-  it("Action: counterDecrease", () => {
+describe('counterActions', () => {
+  it('Action: counterDecrease', () => {
     const expected = {
-      type: COUNTER_DECREASE
+      type: COUNTER_DECREASE,
     };
     const actual = counterDecrease();
     expect(actual).toEqual(expected);
   });
 
-  it("Action: counterIncrease", () => {
+  it('Action: counterIncrease', () => {
     const expected = {
-      type: COUNTER_INCREASE
+      type: COUNTER_INCREASE,
     };
     const actual = counterIncrease();
     expect(actual).toEqual(expected);
   });
 
-  it("Action: counterReset", () => {
+  it('Action: counterReset', () => {
     const expected = {
-      type: COUNTER_RESET
+      type: COUNTER_RESET,
     };
     const actual = counterReset();
     expect(actual).toEqual(expected);
   });
 
-  it("Action: counterSet", () => {
+  it('Action: counterSet', () => {
     const number = 999;
     const expected = {
       type: COUNTER_SET,
-      payload: { number }
+      payload: { number },
     };
     const actual = counterSet(number);
     expect(actual).toEqual(expected);
