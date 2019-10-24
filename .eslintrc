@@ -1,0 +1,22 @@
+{
+  "env": {
+    "browser": true
+  },
+  "parser": "babel-eslint",
+  "extends": ["react-app"],
+  "plugins": ["prettier"],
+  "rules": {
+    "curly": "warn",
+    "no-debugger": "error",
+    "no-console": "error",
+    "prettier/prettier": "error",
+    "strict": ["error", "global"]
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx"]
+      }
+    }
+  }
+}
