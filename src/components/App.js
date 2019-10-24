@@ -8,7 +8,7 @@ import CounterForm from "./Counter/CounterForm";
 function App() {
   return (
     <Provider store={store}>
-      <CounterHeader />
+      <CounterHeader foo="var" />
       <CounterForm />
     </Provider>
   );

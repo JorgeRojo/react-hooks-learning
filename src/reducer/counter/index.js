@@ -14,7 +14,7 @@ const counterReducer = (state = defaultState, action) => {
     case COUNTER_INCREASE:
       return (state = state + 1);
     case COUNTER_RESET:
-      return 0;
+      return defaultState;
     case COUNTER_SET:
       return action.payload.number;
     default:
