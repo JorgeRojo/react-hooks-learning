@@ -72,6 +72,19 @@ describe('CounterForm Component', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('rerenders the component', () => {
+    const rerenderValue = 666;
+    selectCounter.mockReturnValueOnce(0).mockReturnValueOnce(rerenderValue);
+
+    const { rerender, getByText } = setup();
+    rerender(component);
+
+    const counterText = getByText(
+      `counter_${rerenderValue}_number_${rerenderValue}`
+    );
+    expect(counterText).toBeDefined();
+  });
+
   it('counterIncrease', () => {
     const { counterIncreaseBtn } = setup();
     fireEvent.click(counterIncreaseBtn);

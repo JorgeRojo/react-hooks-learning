@@ -3,6 +3,9 @@
 exports[`CounterForm Component renders the component 1`] = `
 <div>
   <p>
+    counter_999_number_999
+  </p>
+  <p>
     <button
       aria-label="counterIncreaseBtn"
     >

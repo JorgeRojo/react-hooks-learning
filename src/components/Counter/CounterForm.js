@@ -46,6 +46,7 @@ const CounterForm = () => {
 
   return (
     <>
+      <p>{`counter_${counter}_number_${number}`}</p>
       <p>
         <button aria-label="counterIncreaseBtn" onClick={counterIncrease}>
           + 1
