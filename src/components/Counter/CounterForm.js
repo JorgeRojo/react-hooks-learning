@@ -1,92 +1,126 @@
-import React, { useCallback, useState, useEffect } from 'react';
-import { useSelector, shallowEqual } from 'react-redux';
-import { withReduxDispatch } from '../../store';
+import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
 
-import * as counterActions from '../../actions/counterActions';
-import { selectCounter } from '../../reducer';
-
-import { getNumberFromEvent } from './counterHelpers';
-
-const {
+import {
   counterIncrease,
   counterDecrease,
   counterSet,
   counterReset,
-} = withReduxDispatch(counterActions);
+} from '../../actions/counterActions';
+import { selectCounter } from '../../reducer';
 
-const CounterForm = () => {
-  const counter = useSelector(selectCounter, shallowEqual);
+import { getNumberFromEvent } from './counterHelpers';
 
-  const [number, setNumber] = useState(counter);
+class CounterForm extends PureComponent {
+  constructor(props) {
+    super(props);
 
-  useEffect(() => {
-    setNumber(counter);
-  }, [counter]);
+    this.state = {
+      number: props.counter,
+    };
 
-  const handleChangeNumber = useCallback(event => {
-    setNumber(getNumberFromEvent(event));
-  }, []);
+    this.handleChangeNumber = this.handleChangeNumber.bind(this);
+    this.handleClickSet = this.handleClickSet.bind(this);
+    this.handleKeyPressSet = this.handleKeyPressSet.bind(this);
+    this.handleChangeSet = this.handleChangeSet.bind(this);
+  }
 
-  const handleClickSet = useCallback(() => {
-    counterSet(number);
-  }, [number]);
+  componentDidUpdate(prevProps) {
+    const { counter } = this.props;
+    if (prevProps.counter !== counter) {
+      this.setState({
+        number: counter,
+      });
+    }
+  }
 
-  const handleKeyPressSet = useCallback(
-    ({ key }) => {
-      if (key === 'Enter') {
-        counterSet(number);
-      }
-    },
-    [number]
-  );
+  handleChangeNumber(event) {
+    this.setState({
+      number: getNumberFromEvent(event),
+    });
+  }
 
-  const handleChangeSet = useCallback(event => {
-    counterSet(getNumberFromEvent(event));
-  }, []);
+  handleClickSet() {
+    this.props.counterSet(this.state.number);
+  }
 
-  return (
-    <>
-      <p>
-        <button aria-label="counterIncreaseBtn" onClick={counterIncrease}>
-          + 1
-        </button>
+  handleKeyPressSet({ key }) {
+    if (key === 'Enter') {
+      this.props.counterSet(this.state.number);
+    }
+  }
 
-        <span> | </span>
-        <button aria-label="counterDecreaseBtn" onClick={counterDecrease}>
-          - 1
-        </button>
+  handleChangeSet(event) {
+    this.props.counterSet(getNumberFromEvent(event));
+  }
 
-        <span> | </span>
-        <button aria-label="counterResetBtn" onClick={counterReset}>
-          = 0
-        </button>
-      </p>
+  render() {
+    const {
+      counter,
+      counterIncrease,
+      counterDecrease,
+      counterReset,
+    } = this.props;
+    const { number } = this.state;
 
-      <p>
-        <input
-          aria-label="handleChangeNumberInput"
-          value={number}
-          onKeyPress={handleKeyPressSet}
-          onChange={handleChangeNumber}
-          type="text"
-        />
-        <button aria-label="handleClickSetBtn" onClick={handleClickSet}>
-          SET
-        </button>
-      </p>
+    return (
+      <>
+        <p>
+          <button aria-label="counterIncreaseBtn" onClick={counterIncrease}>
+            + 1
+          </button>
 
-      <p>
-        <label htmlFor="number-live"> counter = </label>
-        <input
-          aria-label="handleChangeSetInput"
-          id="number-live"
-          value={counter}
-          onChange={handleChangeSet}
-          type="text"
-        />
-      </p>
-    </>
-  );
+          <span> | </span>
+          <button aria-label="counterDecreaseBtn" onClick={counterDecrease}>
+            - 1
+          </button>
+
+          <span> | </span>
+          <button aria-label="counterResetBtn" onClick={counterReset}>
+            = 0
+          </button>
+        </p>
+
+        <p>
+          <input
+            aria-label="handleChangeNumberInput"
+            value={number}
+            onKeyPress={this.handleKeyPressSet}
+            onChange={this.handleChangeNumber}
+            type="text"
+          />
+          <button aria-label="handleClickSetBtn" onClick={this.handleClickSet}>
+            SET
+          </button>
+        </p>
+
+        <p>
+          <label htmlFor="number-live"> counter = </label>
+          <input
+            aria-label="handleChangeSetInput"
+            id="number-live"
+            value={counter}
+            onChange={this.handleChangeSet}
+            type="text"
+          />
+        </p>
+      </>
+    );
+  }
+}
+
+const mapStateToProps = state => ({
+  counter: selectCounter(state),
+});
+
+const mapDispatchToProps = {
+  counterIncrease,
+  counterDecrease,
+  counterSet,
+  counterReset,
 };
 
-export default CounterForm;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CounterForm);
