@@ -10,7 +10,7 @@ import { selectCounter } from '../../../reducer/counter';
 import CounterHeader from '../CounterHeader';
 
 jest.mock('../../../store', () =>
-  require('../../../store/___mocks___/mockStore')
+  require('../../../store/__mocks__/mockStore')
 );
 jest.mock('../../../reducer/counter');
 

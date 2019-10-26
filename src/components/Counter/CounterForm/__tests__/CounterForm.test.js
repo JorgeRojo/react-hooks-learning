@@ -3,22 +3,22 @@ import ReactDOM from 'react-dom';
 import { render, cleanup, fireEvent } from '@testing-library/react';
 import { Provider } from 'react-redux';
 
-import store from '../../../store';
-import { selectCounter } from '../../../reducer/counter';
+import store from '../../../../store';
+import { selectCounter } from '../../../../reducer/counter';
 import {
   counterIncrease,
   counterDecrease,
   counterSet,
   counterReset,
-} from '../../../actions/counterActions';
+} from '../../../../actions/counterActions';
 
 import CounterForm from '../CounterForm';
 
-jest.mock('../../../store', () =>
-  require('../../../store/___mocks___/mockStore')
+jest.mock('../../../../store', () =>
+  require('../../../../store/__mocks__/mockStore')
 );
-jest.mock('../../../reducer/counter');
-jest.mock('../../../actions/counterActions');
+jest.mock('../../../../reducer/counter');
+jest.mock('../../../../actions/counterActions');
 
 describe('CounterForm Component', () => {
   const component = (

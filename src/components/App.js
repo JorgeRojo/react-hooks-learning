@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import store from '../store';
 
 import CounterHeader from './Counter/CounterHeader';
-import CounterForm from './Counter/CounterForm';
+import CounterForm from './Counter/CounterForm/CounterForm';
 
 function App() {
   return (

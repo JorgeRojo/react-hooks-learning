@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom';
 import { render } from '@testing-library/react';
 
 import App from '../App';
-import { mockComponent } from '../../testHelpers';
+import { mockComponent } from '../../helpers/testHelpers';
 
 jest.mock('../Counter/CounterHeader', () => props =>
   mockComponent('CounterHeader', props)
 );
-jest.mock('../Counter/CounterForm', () => props =>
+jest.mock('../Counter/CounterForm/CounterForm', () => props =>
   mockComponent('CounterForm', props)
 );
 
