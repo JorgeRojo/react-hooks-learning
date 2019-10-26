@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CounterHeader Component renders the component 1`] = `
+<div>
+  <h1
+    class="display-4 mb-4"
+  >
+    Counter: 
+    999
+  </h1>
+</div>
+`;

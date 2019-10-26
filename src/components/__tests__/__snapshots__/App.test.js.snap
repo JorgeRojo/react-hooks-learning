@@ -2,15 +2,37 @@
 
 exports[`App Component renders the component 1`] = `
 <div>
-  <code
-    name="CounterHeader"
+  <nav
+    style="position: absolute;"
   >
-    {"foo":"var"}
-  </code>
-  <code
-    name="CounterForm"
+    <ul>
+      <li>
+        <a
+          href="/"
+        >
+          Home
+        </a>
+      </li>
+      <li>
+        <a
+          href="/counter"
+        >
+          Counter
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <div
+    class="container text-center mt-4"
   >
-    {}
-  </code>
+    <h1
+      class="display-4 mb-4"
+    >
+      Home
+    </h1>
+    <p>
+      Testing react hooks
+    </p>
+  </div>
 </div>
 `;

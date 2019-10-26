@@ -2,7 +2,9 @@
 
 exports[`CounterHeader Component renders the component 1`] = `
 <div>
-  <h1>
+  <h1
+    class="display-4 mb-4"
+  >
     Counter: 
     999
   </h1>

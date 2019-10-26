@@ -1,15 +1,13 @@
 import React, { useCallback, useState, useEffect } from 'react';
 import { useSelector, shallowEqual } from 'react-redux';
-import { reduxActionsDispatchers } from '../../../store';
+import { reduxActionsDispatchers } from '../../../../store';
 
-import * as counterActions from '../../../actions/counterActions';
-import { selectCounter } from '../../../reducer';
-
-import { getNumberFromEvent } from '../../../helpers/utils';
-
+import { getNumberFromEvent } from '../../../../helpers/utils';
 import CounterFormView from './CounterFormView';
 
-const { dispatchCounterSet } = reduxActionsDispatchers(counterActions);
+import { counterSet } from '../../../../actions/counterActions';
+import { selectCounter } from '../../../../reducer';
+const { dispatchCounterSet } = reduxActionsDispatchers({ counterSet });
 
 const CounterForm = () => {
   const counter = useSelector(selectCounter, shallowEqual);

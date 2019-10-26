@@ -2,14 +2,12 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import store from '../store';
 
-import CounterHeader from './Counter/CounterHeader';
-import CounterForm from './Counter/CounterForm/CounterForm';
+import Routes from './Routes/Routes';
 
 function App() {
   return (
     <Provider store={store}>
-      <CounterHeader foo="var" />
-      <CounterForm />
+      <Routes />
     </Provider>
   );
 }
