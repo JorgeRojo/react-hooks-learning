@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Counter Component renders the component 1`] = `
+<div>
+  <div
+    class="container text-center mt-4"
+  >
+    <code
+      name="CounterHeader"
+    >
+      {}
+    </code>
+    <code
+      name="CounterForm"
+    >
+      {}
+    </code>
+  </div>
+</div>
+`;

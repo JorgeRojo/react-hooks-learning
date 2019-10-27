@@ -12,7 +12,7 @@ import {
   counterReset,
 } from '../../../../actions/counterActions';
 
-import CounterForm from '../CounterForm';
+import CounterForm from '../CounterForm/CounterForm';
 
 jest.mock('../../../../store', () =>
   require('../../../../store/__mocks__/mockStore')
@@ -57,8 +57,8 @@ describe('CounterForm Component', () => {
   });
 
   afterEach(() => {
-    jest.clearAllMocks();
     cleanup();
+    jest.clearAllMocks();
   });
 
   it('renders without crashing', () => {

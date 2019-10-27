@@ -19,7 +19,6 @@ const Routes = () => {
             ))}
         </ul>
       </nav>
-
       <Switch>
         {routesConfig.map(({ exact, path, component }, index) => (
           <Route key={index} {...{ exact, path, component }} />

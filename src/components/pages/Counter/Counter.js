@@ -8,6 +8,7 @@ const { dispatchCounterReset } = reduxActionsDispatchers({ counterReset });
 
 const Counter = () => {
   useEffect(() => dispatchCounterReset);
+
   return (
     <div className="container text-center mt-4">
       <CounterHeader />

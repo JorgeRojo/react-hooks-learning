@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Routes Component renders the component 1`] = `
+<div>
+  <nav
+    style="position: absolute;"
+  >
+    <ul>
+      <li>
+        <a
+          href="/"
+        >
+          Home
+        </a>
+      </li>
+      <li>
+        <a
+          href="/counter"
+        >
+          Counter
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <div
+    class="container text-center mt-4"
+  >
+    <h1
+      class="display-4 mb-4"
+    >
+      Home
+    </h1>
+    <p>
+      Testing react hooks
+    </p>
+  </div>
+</div>
+`;

@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RouteNoMatch Component renders the component 1`] = `
+<div>
+  <div
+    class="container text-center mt-4"
+  >
+    <h1
+      class="display-4 mb-4"
+    >
+      Route no match
+    </h1>
+  </div>
+</div>
+`;
