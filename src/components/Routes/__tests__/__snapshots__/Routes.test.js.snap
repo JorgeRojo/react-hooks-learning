@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`App Component renders the component 1`] = `
+exports[`Routes Component renders the component 1`] = `
 <div>
   <nav
     style="position: absolute;"

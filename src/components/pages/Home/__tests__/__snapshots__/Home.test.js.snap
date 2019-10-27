@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home Component renders the component 1`] = `
+<div>
+  <div
+    class="container text-center mt-4"
+  >
+    <h1
+      class="display-4 mb-4"
+    >
+      Home
+    </h1>
+    <p>
+      Testing react hooks
+    </p>
+  </div>
+</div>
+`;

@@ -1,5 +1,5 @@
 import { selectCounter } from '../index';
-import mockState from '../../store/___mocks___/mockState';
+import mockState from '../../store/__mocks__/mockState';
 
 describe('Selectors', () => {
   it('selectCounter', () => {

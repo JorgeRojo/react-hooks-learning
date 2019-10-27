@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CounterForm Component renders the component 1`] = `
+<div>
+  <div
+    class="card bg-light"
+  >
+    <p
+      class="card-header lead"
+    >
+      counter_999_number_999
+    </p>
+    <div
+      class="card-body"
+    >
+      <p
+        class="input-group"
+      >
+        <button
+          aria-label="counterIncreaseBtn"
+          class="btn btn-primary mx-1 px-4"
+        >
+          + 1
+        </button>
+        <button
+          aria-label="counterDecreaseBtn"
+          class="btn btn-primary mx-1 px-4"
+        >
+          - 1
+        </button>
+        <button
+          aria-label="counterResetBtn"
+          class="btn btn-primary mx-1 px-4"
+        >
+          = 0
+        </button>
+      </p>
+      <p
+        class="input-group"
+      >
+        <input
+          aria-label="handleChangeNumberInput"
+          class="form-control"
+          type="text"
+          value="999"
+        />
+        <span
+          class="input-group-append"
+        >
+          <button
+            aria-label="handleClickSetBtn"
+            class="btn btn-primary  px-4"
+          >
+            SET
+          </button>
+        </span>
+      </p>
+      <p
+        class="input-group"
+      >
+        <span
+          class="input-group-prepend"
+        >
+          <label
+            class="input-group-text"
+            for="number-live"
+          >
+            counter =
+          </label>
+        </span>
+        <input
+          aria-label="handleChangeSetInput"
+          class="form-control"
+          id="number-live"
+          type="text"
+          value="999"
+        />
+      </p>
+    </div>
+  </div>
+</div>
+`;
