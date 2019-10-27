@@ -5,9 +5,9 @@ export const COUNTER_RESET = 'COUNTER_RESET';
 export const COUNTER_SET = 'COUNTER_SET';
 // HTTP_REQUEST
 export const HTTP_REQUEST = 'HTTP_REQUEST';
-// API
-export const API = 'API';
-export const API_REQUEST = 'API/REQUEST';
-export const API_ERROR = 'API/ERROR';
-export const API_SUCCESS = 'API/SUCCESS';
-export const API_RESET = 'API/RESET';
+// POSTS
+export const POSTS = 'POSTS';
+export const POSTS_REQUEST = 'POSTS/REQUEST';
+export const POSTS_ERROR = 'POSTS/ERROR';
+export const POSTS_SUCCESS = 'POSTS/SUCCESS';
+export const POSTS_RESET = 'POSTS/RESET';

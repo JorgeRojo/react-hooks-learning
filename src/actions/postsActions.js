@@ -1,13 +1,13 @@
-import { HTTP_REQUEST, API_RESET, API } from './actionTypes';
+import { HTTP_REQUEST, POSTS_RESET, POSTS } from './actionTypes';
 import { HttpRequest } from '../store/httpRequestReduxMiddleware';
 
-export const apiGet = () => ({
+export const postsGet = () => ({
   type: HTTP_REQUEST,
-  nextActionType: API,
+  nextActionType: POSTS,
   request: new HttpRequest('https://jsonplaceholder.typicode.com/posts'),
   responseStatus: 200,
 });
 
-export const apiReset = () => ({
-  type: API_RESET,
+export const postsReset = () => ({
+  type: POSTS_RESET,
 });
