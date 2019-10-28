@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
-import api from './posts';
+import posts from './posts';
 import counter from './counter';
 
 import * as fromCounter from './counter';
 import * as fromApi from './posts';
 
 const reducer = {
-  api,
+  posts,
   counter,
 };
 
@@ -16,7 +16,7 @@ export default combineReducers(reducer);
 
 export const selectCounter = state => fromCounter.selectCounter(state.counter);
 
-export const selectPostsList = state => fromApi.selectPostsList(state.api);
+export const selectPostsList = state => fromApi.selectPostsList(state.posts);
 
 export const selectPostsIsLoading = state =>
-  fromApi.selectPostsIsLoading(state.api);
+  fromApi.selectPostsIsLoading(state.posts);

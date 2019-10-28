@@ -1,3 +1,5 @@
+import { HTTP_REQUEST } from '../actions/actionTypes';
+
 export class HttpRequest {
   _url = '';
   _body = {};
@@ -6,12 +8,12 @@ export class HttpRequest {
   cache = 'default';
   mode = 'cors';
 
-  constructor(url, params = {}, bodyData) {
+  constructor(url = '', params = {}, bodyData) {
     this.setURL(url, params);
     this._body = JSON.stringify(bodyData);
   }
 
-  setURL(url, params = {}) {
+  setURL(url, params) {
     const urlParams = Object.keys(params).map(
       key => `${key}=${encodeURI(params[key])}`
     );
@@ -47,9 +49,6 @@ const successAction = (nextActionType, data, onRequestSuccess) => {
 };
 
 const errorAction = (nextActionType, data, onRequestError) => {
-  // eslint-disable-next-line no-console
-  console.error(data);
-
   if (typeof onRequestError === 'function') {
     onRequestError(data);
   }
@@ -69,7 +68,7 @@ const httpRequestReduxMiddleware = ({ dispatch }) => next => async action => {
     onRequestError,
     onRequestSuccess,
   } = action;
-  if (type === 'HTTP_REQUEST') {
+  if (type === HTTP_REQUEST) {
     let response;
     let data;
 
@@ -88,7 +87,13 @@ const httpRequestReduxMiddleware = ({ dispatch }) => next => async action => {
         return next(errorAction(nextActionType, error, onRequestError));
       }
     } else {
-      return next(errorAction(nextActionType, response, onRequestError));
+      return next(
+        errorAction(
+          nextActionType,
+          { error: { unexpectedStatus: response.status } },
+          onRequestError
+        )
+      );
     }
 
     return next(successAction(nextActionType, data, onRequestSuccess));

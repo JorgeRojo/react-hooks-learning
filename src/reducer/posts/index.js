@@ -19,7 +19,7 @@ const postsReducer = (state = defaultState, action) => {
     case POSTS_REQUEST:
       return { ...defaultState, isLoading: true };
     case POSTS_ERROR:
-      return { ...defaultState, isLoading: false };
+      return { ...state, isLoading: false };
     case POSTS_SUCCESS:
       return {
         response: action.payload.response,
