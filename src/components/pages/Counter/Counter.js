@@ -2,11 +2,11 @@ import React, { useEffect } from 'react';
 import CounterHeader from './CounterHeader';
 import CounterForm from './CounterForm/CounterForm';
 
-import { reduxActionsDispatchers } from '../../../store';
 import { counterReset } from '../../../actions/counterActions';
-const { dispatchCounterReset } = reduxActionsDispatchers({ counterReset });
+import useReduxAction from '../../../hooks/useReduxAction';
 
 const Counter = () => {
+  const dispatchCounterReset = useReduxAction(counterReset);
   useEffect(() => dispatchCounterReset);
 
   return (

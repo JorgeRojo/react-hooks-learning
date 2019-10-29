@@ -1,15 +1,17 @@
 import React, { useCallback, useState, useEffect } from 'react';
 import { useSelector, shallowEqual } from 'react-redux';
-import { reduxActionsDispatchers } from '../../../../store';
-
-import { getNumberFromEvent } from '../../../../helpers/utils';
-import CounterFormView from './CounterFormView';
+import { selectCounter } from '../../../../reducer';
 
 import { counterSet } from '../../../../actions/counterActions';
-import { selectCounter } from '../../../../reducer';
-const { dispatchCounterSet } = reduxActionsDispatchers({ counterSet });
+import useReduxAction from '../../../../hooks/useReduxAction';
+
+import { getNumberFromEvent } from '../../../../helpers/utils';
+
+import CounterFormView from './CounterFormView';
 
 const CounterForm = () => {
+  const dispatchCounterSet = useReduxAction(counterSet);
+
   const counter = useSelector(selectCounter, shallowEqual);
 
   const [number, setNumber] = useState(counter);
@@ -24,7 +26,7 @@ const CounterForm = () => {
 
   const handleClickSet = useCallback(() => {
     dispatchCounterSet(number);
-  }, [number]);
+  }, [number, dispatchCounterSet]);
 
   const handleKeyPressSet = useCallback(
     ({ key }) => {
@@ -32,7 +34,7 @@ const CounterForm = () => {
         dispatchCounterSet(number);
       }
     },
-    [number]
+    [number, dispatchCounterSet]
   );
 
   const handleChangeSet = useCallback(event => {

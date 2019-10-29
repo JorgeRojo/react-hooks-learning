@@ -1,21 +1,13 @@
 import React from 'react';
-import { areShallowDiffProps } from '../../../../helpers/utils';
 
-import { reduxActionsDispatchers } from '../../../../store';
 import {
   counterIncrease,
   counterDecrease,
   counterReset,
 } from '../../../../actions/counterActions';
-const {
-  dispatchCounterIncrease,
-  dispatchCounterDecrease,
-  dispatchCounterReset,
-} = reduxActionsDispatchers({
-  counterIncrease,
-  counterDecrease,
-  counterReset,
-});
+import useReduxAction from '../../../../hooks/useReduxAction';
+
+import { areShallowDiffProps } from '../../../../helpers/utils';
 
 const CounterFormView = ({
   counter,
@@ -25,6 +17,10 @@ const CounterFormView = ({
   handleKeyPressSet,
   number,
 }) => {
+  const dispatchCounterIncrease = useReduxAction(counterIncrease);
+  const dispatchCounterDecrease = useReduxAction(counterDecrease);
+  const dispatchCounterReset = useReduxAction(counterReset);
+
   return (
     <div className="card bg-light">
       <p className="card-header lead">{`counter_${counter}_number_${number}`}</p>

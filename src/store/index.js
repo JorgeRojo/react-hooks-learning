@@ -3,7 +3,6 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import reducer from '../reducer';
 import httpRequestReduxMiddleware from './httpRequestReduxMiddleware';
-import reduxActionsDispatchersGenerator from './reduxActionsDispatchersGenerator';
 
 const initialState = {};
 const middleware = [thunk, httpRequestReduxMiddleware];
@@ -16,5 +15,3 @@ const store = createStore(
 );
 
 export default store;
-
-export const reduxActionsDispatchers = reduxActionsDispatchersGenerator(store);

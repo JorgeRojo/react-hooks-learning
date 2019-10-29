@@ -3,21 +3,20 @@ import { useSelector, shallowEqual } from 'react-redux';
 
 import { selectPostsList, selectPostsIsLoading } from '../../../reducer';
 
-import { reduxActionsDispatchers } from '../../../store';
 import { postsGet, postsReset } from '../../../actions/postsActions';
-const { dispatchPostsGet, dispatchPostsReset } = reduxActionsDispatchers({
-  postsGet,
-  postsReset,
-});
+import useReduxAction from '../../../hooks/useReduxAction';
 
 function Posts() {
-  const isLoading = useSelector(selectPostsIsLoading, shallowEqual);
-  const posts = useSelector(selectPostsList, shallowEqual);
+  const dispatchPostsGet = useReduxAction(postsGet);
+  const dispatchPostsReset = useReduxAction(postsReset);
 
   useEffect(() => {
     dispatchPostsGet();
     return dispatchPostsReset;
-  }, []);
+  }, [dispatchPostsGet, dispatchPostsReset]);
+
+  const isLoading = useSelector(selectPostsIsLoading, shallowEqual);
+  const posts = useSelector(selectPostsList, shallowEqual);
 
   return (
     <div className="container text-center mt-4">
