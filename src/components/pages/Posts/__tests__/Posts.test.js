@@ -31,7 +31,6 @@ describe('Home Component', () => {
     selectPostsList.mockReturnValue(mockState.posts.response.data);
     postsGet.mockImplementation(() => ({ type: 'postsGet' }));
     postsReset.mockImplementation(() => ({ type: 'postsReset' }));
-    postsReset.mockImplementation(() => ({ type: 'postsReset' }));
   });
 
   afterEach(() => {
