@@ -19,6 +19,15 @@ class CounterForm extends Component {
     this.handleChangeSet = this.handleChangeSet.bind(this);
   }
 
+  componentDidUpdate(prevProps) {
+    const { counter } = this.props;
+    if (prevProps.counter !== counter) {
+      this.setState({
+        number: counter,
+      });
+    }
+  }
+
   handleChangeNumber(event) {
     this.setState({ number: getNumberFromEvent(event) });
   }

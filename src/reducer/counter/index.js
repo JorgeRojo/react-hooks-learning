@@ -21,7 +21,8 @@ const counterReducer = (state = defaultState, action) => {
       return state;
   }
 };
-
 export default counterReducer;
+
+// Selectors
 
 export const selectCounter = state => state;
