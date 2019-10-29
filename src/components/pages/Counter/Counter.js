@@ -1,20 +1,28 @@
-import React, { useEffect } from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import CounterHeader from './CounterHeader';
 import CounterForm from './CounterForm/CounterForm';
 
-import { reduxActionsDispatchers } from '../../../store';
 import { counterReset } from '../../../actions/counterActions';
-const { dispatchCounterReset } = reduxActionsDispatchers({ counterReset });
 
-const Counter = () => {
-  useEffect(() => dispatchCounterReset);
+class Counter extends Component {
+  componentWillUnmount() {
+    this.props.counterReset();
+  }
 
-  return (
-    <div className="container text-center mt-4">
-      <CounterHeader />
-      <CounterForm />
-    </div>
-  );
-};
+  render() {
+    return (
+      <div className="container text-center mt-4">
+        <CounterHeader />
+        <CounterForm />
+      </div>
+    );
+  }
+}
 
-export default Counter;
+export default connect(
+  null,
+  {
+    counterReset,
+  }
+)(Counter);

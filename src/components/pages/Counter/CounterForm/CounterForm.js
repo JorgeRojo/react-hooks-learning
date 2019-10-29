@@ -1,56 +1,63 @@
-import React, { useCallback, useState, useEffect } from 'react';
-import { useSelector, shallowEqual } from 'react-redux';
-import { reduxActionsDispatchers } from '../../../../store';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import { getNumberFromEvent } from '../../../../helpers/utils';
 import CounterFormView from './CounterFormView';
 
 import { counterSet } from '../../../../actions/counterActions';
 import { selectCounter } from '../../../../reducer';
-const { dispatchCounterSet } = reduxActionsDispatchers({ counterSet });
 
-const CounterForm = () => {
-  const counter = useSelector(selectCounter, shallowEqual);
+class CounterForm extends Component {
+  constructor(props) {
+    super(props);
 
-  const [number, setNumber] = useState(counter);
+    this.state = { number: props.counter };
 
-  useEffect(() => {
-    setNumber(counter);
-  }, [counter]);
+    this.handleChangeNumber = this.handleChangeNumber.bind(this);
+    this.handleClickSet = this.handleClickSet.bind(this);
+    this.handleKeyPressSet = this.handleKeyPressSet.bind(this);
+    this.handleChangeSet = this.handleChangeSet.bind(this);
+  }
 
-  const handleChangeNumber = useCallback(event => {
-    setNumber(getNumberFromEvent(event));
-  }, []);
+  handleChangeNumber(event) {
+    this.setState({ number: getNumberFromEvent(event) });
+  }
 
-  const handleClickSet = useCallback(() => {
-    dispatchCounterSet(number);
-  }, [number]);
+  handleClickSet() {
+    this.props.counterSet(this.state.number);
+  }
 
-  const handleKeyPressSet = useCallback(
-    ({ key }) => {
-      if (key === 'Enter') {
-        dispatchCounterSet(number);
-      }
-    },
-    [number]
-  );
+  handleKeyPressSet({ key }) {
+    if (key === 'Enter') {
+      this.props.counterSet(this.state.number);
+    }
+  }
 
-  const handleChangeSet = useCallback(event => {
-    dispatchCounterSet(getNumberFromEvent(event));
-  }, []);
+  handleChangeSet(event) {
+    this.props.counterSet(getNumberFromEvent(event));
+  }
 
-  return (
-    <CounterFormView
-      {...{
-        counter,
-        handleChangeNumber,
-        handleChangeSet,
-        handleClickSet,
-        handleKeyPressSet,
-        number,
-      }}
-    />
-  );
-};
+  render() {
+    return (
+      <CounterFormView
+        counter={this.props.counter}
+        handleChangeNumber={this.handleChangeNumber}
+        handleChangeSet={this.handleChangeSet}
+        handleClickSet={this.handleClickSet}
+        handleKeyPressSet={this.handleKeyPressSet}
+        number={this.state.number}
+      />
+    );
+  }
+}
 
-export default CounterForm;
+const mapStateToProps = state => ({
+  counter: selectCounter(state),
+});
+
+export default connect(
+  mapStateToProps,
+  {
+    counterSet,
+  }
+)(CounterForm);

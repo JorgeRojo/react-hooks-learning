@@ -1,10 +1,13 @@
 import React from 'react';
-import { useSelector, shallowEqual } from 'react-redux';
+import { connect } from 'react-redux';
 import { selectCounter } from '../../../reducer';
 
-const CounterHeader = () => {
-  const counter = useSelector(selectCounter, shallowEqual);
+const CounterHeader = ({ counter }) => {
   return <h1 className="display-4 mb-4">Counter: {counter}</h1>;
 };
 
-export default CounterHeader;
+const mapStateToProps = state => ({
+  counter: selectCounter(state),
+});
+
+export default connect(mapStateToProps)(CounterHeader);
