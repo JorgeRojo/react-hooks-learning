@@ -21,14 +21,17 @@ describe('reduxActionsDispatchersGenerator', () => {
     expect(reduxActions).toEqual({});
   });
 
-  it('with actionCreators list', () => {
-    const actionValue = { type: 'ACTION', payload: { foo: 'bar' } };
-
-    const { dispatchAction1 } = reduxActionsDispatchers({
-      action1: jest.fn().mockReturnValue(actionValue),
+  it('dispatch actionCreator with several parameters', () => {
+    const param1 = 'value1';
+    const param2 = 'value2';
+    const actionValue = { type: 'ACTION', payload: { param1, param2 } };
+    const actionCreator = jest.fn().mockReturnValue(actionValue);
+    const { dispatchActionCreator } = reduxActionsDispatchers({
+      actionCreator,
     });
-
-    expect(dispatchAction1()).toEqual(actionValue);
+    dispatchActionCreator(param1, param2);
+    expect(actionCreator).toHaveBeenCalledTimes(1);
+    expect(actionCreator).toHaveBeenCalledWith(param1, param2);
     expect(dispatchSpy).toHaveBeenCalledTimes(1);
     expect(dispatchSpy).toHaveBeenCalledWith(actionValue);
   });
