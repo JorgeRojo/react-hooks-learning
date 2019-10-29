@@ -20,6 +20,13 @@ exports[`Routes Component renders the component 1`] = `
           Counter
         </a>
       </li>
+      <li>
+        <a
+          href="/posts"
+        >
+          Posts
+        </a>
+      </li>
     </ul>
   </nav>
   <div

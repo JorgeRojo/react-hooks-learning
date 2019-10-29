@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HttpRequest with default data 1`] = `
+HttpRequest {
+  "_body": "{\\"foo\\":\\"bar\\"}",
+  "_url": "http://url.com?p0=v0&p1=v1&p2=v2",
+  "cache": "default",
+  "headers": Object {
+    "Content-Type": "application/json; charset=UTF-8",
+  },
+  "method": "GET",
+  "mode": "cors",
+}
+`;

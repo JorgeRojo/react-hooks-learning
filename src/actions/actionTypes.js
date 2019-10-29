@@ -1,4 +1,13 @@
+// COUNTER
 export const COUNTER_DECREASE = 'COUNTER_DECREASE';
 export const COUNTER_INCREASE = 'COUNTER_INCREASE';
 export const COUNTER_RESET = 'COUNTER_RESET';
 export const COUNTER_SET = 'COUNTER_SET';
+// HTTP_REQUEST
+export const HTTP_REQUEST = 'HTTP_REQUEST';
+// POSTS
+export const POSTS = 'POSTS';
+export const POSTS_REQUEST = 'POSTS/REQUEST';
+export const POSTS_ERROR = 'POSTS/ERROR';
+export const POSTS_SUCCESS = 'POSTS/SUCCESS';
+export const POSTS_RESET = 'POSTS/RESET';
